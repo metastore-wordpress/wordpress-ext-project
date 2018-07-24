@@ -2,14 +2,12 @@
 
 /**
  * Class WP_EXT_Project_Taxonomy
- * ------------------------------------------------------------------------------------------------------------------ */
-
+ */
 class WP_EXT_Project_Taxonomy extends WP_EXT_Project {
 
 	/**
 	 * Constructor.
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public function __construct() {
 		parent::__construct();
 
@@ -18,8 +16,7 @@ class WP_EXT_Project_Taxonomy extends WP_EXT_Project {
 
 	/**
 	 * Plugin: `initialize`.
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public function run() {
 		add_action( 'init', [ $this, 'taxonomy_meta' ], 0 );
 		add_action( 'init', [ $this, 'taxonomy_status' ], 0 );
@@ -27,8 +24,7 @@ class WP_EXT_Project_Taxonomy extends WP_EXT_Project {
 
 	/**
 	 * Taxonomy: `project_meta`.
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public function taxonomy_meta() {
 		$labels  = [
 			'name'                       => _x( 'Project Meta', 'Meta General Name', 'wp-ext-' . $this->domain_ID ),
@@ -74,8 +70,7 @@ class WP_EXT_Project_Taxonomy extends WP_EXT_Project {
 
 	/**
 	 * Taxonomy: `project_status`.
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public function taxonomy_status() {
 		$labels  = [
 			'name'                       => _x( 'Project Status', 'Status General Name', 'wp-ext-' . $this->domain_ID ),
@@ -124,8 +119,7 @@ class WP_EXT_Project_Taxonomy extends WP_EXT_Project {
  * Helper function to retrieve the static object without using globals.
  *
  * @return WP_EXT_Project_Taxonomy
- * ------------------------------------------------------------------------------------------------------------------ */
-
+ */
 function WP_EXT_Project_Taxonomy() {
 	static $object;
 
@@ -138,6 +132,5 @@ function WP_EXT_Project_Taxonomy() {
 
 /**
  * Initialize the object on `plugins_loaded`.
- * ------------------------------------------------------------------------------------------------------------------ */
-
+ */
 add_action( 'plugins_loaded', [ WP_EXT_Project_Taxonomy(), 'run' ] );

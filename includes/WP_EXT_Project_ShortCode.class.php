@@ -2,14 +2,12 @@
 
 /**
  * Class WP_EXT_Project_ShortCode
- * ------------------------------------------------------------------------------------------------------------------ */
-
+ */
 class WP_EXT_Project_ShortCode extends WP_EXT_Project {
 
 	/**
 	 * Constructor.
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public function __construct() {
 		parent::__construct();
 
@@ -18,28 +16,24 @@ class WP_EXT_Project_ShortCode extends WP_EXT_Project {
 
 	/**
 	 * Plugin: `initialize`.
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public function run() {
 		add_shortcode( $this->archive_ID, [ $this, 'shortcode' ] );
 	}
 
 	/**
 	 * ShortCode.
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public function shortcode( $atts, $content = null ) {
 
 		/**
 		 * Global variables.
-		 * ---------------------------------------------------------------------------------------------------------- */
-
+		 */
 		global $wp_query;
 
 		/**
 		 * Options.
-		 * ---------------------------------------------------------------------------------------------------------- */
-
+		 */
 		$defaults = [
 			'type' => '',
 		];
@@ -65,8 +59,7 @@ class WP_EXT_Project_ShortCode extends WP_EXT_Project {
 
 		/**
 		 * Rendering data.
-		 * ---------------------------------------------------------------------------------------------------------- */
-
+		 */
 		$wp_query = new WP_Query( $args );
 
 		if ( $wp_query->have_posts() ) {
@@ -85,8 +78,7 @@ class WP_EXT_Project_ShortCode extends WP_EXT_Project {
 
 		/**
 		 * Reset query.
-		 * ---------------------------------------------------------------------------------------------------------- */
-
+		 */
 		wp_reset_query();
 	}
 }
@@ -95,8 +87,7 @@ class WP_EXT_Project_ShortCode extends WP_EXT_Project {
  * Helper function to retrieve the static object without using globals.
  *
  * @return WP_EXT_Project_ShortCode
- * ------------------------------------------------------------------------------------------------------------------ */
-
+ */
 function WP_EXT_Project_ShortCode() {
 	static $object;
 
@@ -109,6 +100,5 @@ function WP_EXT_Project_ShortCode() {
 
 /**
  * Initialize the object on `plugins_loaded`.
- * ------------------------------------------------------------------------------------------------------------------ */
-
+ */
 add_action( 'plugins_loaded', [ WP_EXT_Project_ShortCode(), 'run' ] );

@@ -19,7 +19,7 @@
 
 /**
  * Loading `WP_EXT_Project`.
- * ------------------------------------------------------------------------------------------------------------------ */
+ */
 
 function run_wp_ext_project() {
 	require_once( plugin_dir_path( __FILE__ ) . 'includes/WP_EXT_Project.class.php' );
